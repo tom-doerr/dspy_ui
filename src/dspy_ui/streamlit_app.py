@@ -103,7 +103,8 @@ def display_trainset():
         for i, example in enumerate(st.session_state.traindata_selected):
             # keys = example.keys()
             # cols = st.columns(2)
-            cols = st.columns(len(keys) + 1)
+            # cols = st.columns(len(keys) + 1)
+            cols = st.columns([0.3] + [1]*len(keys))
             # with cols[0]:
                 # st.write(example)
             with cols[0]:
