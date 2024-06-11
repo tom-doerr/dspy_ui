@@ -128,10 +128,12 @@ def display_predictions():
 
     cols = st.columns([0.3] + [1]*len(keys))
     with cols[0]:
-        st.write('Predictions')
+        # st.write('Predictions')
+        st.write('### Predictions')
     for i, key in enumerate(keys):
         with cols[i+1]:
-            st.write(key)
+            # st.write(key)
+            st.write('### ' + key)
 
     '---'
 
@@ -152,7 +154,7 @@ def display_predictions():
                 # st.code(prediction)
                 # st.write(prediction.tweet_text)
             with cols[0]:
-                st.button('Add to trainset', on_click=add_to_trainset, args=(prediction, pred_i), key=f'add_{pred_i}')
+                st.button('Mark high quality', on_click=add_to_trainset, args=(prediction, pred_i), key=f'add_{pred_i}')
             for i, key in enumerate(keys):
                 with cols[i+1]:
                     st.write(prediction[key])
@@ -176,16 +178,16 @@ def run_evaluation():
     evaluate(compiled_program)
 
 initialize_session_state()
-'### Accepted Outputs'
+'### High Quality Outputs'
 display_trainset()
 '---'
 '---'
 # '### Predictions'
 display_predictions()
 
-st.button('Run Evaluation', on_click=run_evaluation)
+st.button('Run', on_click=run_evaluation)
 with st.sidebar:
-    st.button('Run Evaluation', on_click=run_evaluation, key='sidebar_run_evaluation')
+    st.button('Run', on_click=run_evaluation, key='sidebar_run_evaluation')
 
 
 tweet_generator = TweetGenerationModule()
